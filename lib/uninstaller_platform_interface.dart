@@ -23,7 +23,7 @@ abstract class UninstallerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<String?> UninstallApp() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

@@ -10,8 +10,8 @@ class MethodChannelUninstaller extends UninstallerPlatform {
   final methodChannel = const MethodChannel('uninstaller');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final bool isUninstalled=await _channel.invokeMethod('Uninstall',{"package":package});
+  Future<String?> UninstallApp() async {
+    final bool isUninstalled = await methodChannel.invokeMethod<String>('Uninstall',{"package":package});
     return isUninstalled;
   }
 }

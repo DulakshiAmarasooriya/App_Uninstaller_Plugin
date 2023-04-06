@@ -4,6 +4,8 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:uninstaller/uninstaller.dart';
 import 'package:uninstaller/uninstaller_method_channel.dart';
+import 'package:uninstaller/uninstaller_platform_interface.dart';
+
 
 
 void main() {
@@ -16,7 +18,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String uninstallStatus = "";
+  String _uninstallStatus = "";
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +36,15 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.pink,
                   onPressed: () async {
                     try {
-                      var isUninstalled = await Uninstaller.Uninstall(
-                          "com.example.testapplication");
+                      var isUninstalled = await Uninstaller.Unintall(
+                          "com.example.misapplication");
                       setState(() {
-                        uninstallStatus = isUninstalled
+                        _uninstallStatus = isUninstalled
                             ? "Successfully Uninstalled!"
                             : "Cancelled by user";
                       });
                     } on Exception {
-                      uninstallStatus = "Some error occurred";
+                      _uninstallStatus = "Some error occurred";
                     }
                   },
                   child: Text(
@@ -54,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                   height: 10,
                 ),
                 Text(
-                  uninstallStatus,
+                  _uninstallStatus,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 )
               ]),
@@ -64,5 +66,5 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class Uninstall {
-}
+
+

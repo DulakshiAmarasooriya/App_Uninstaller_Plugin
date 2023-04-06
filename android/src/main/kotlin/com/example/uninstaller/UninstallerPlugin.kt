@@ -36,8 +36,8 @@ class UninstallerPlugin: FlutterPlugin, MethodCallHandler,PluginRegistry.Activit
      this.uninstallResult=result
       val intent=Intent(Intent.ACTION_DELETE)
       val app: String? = call.argument("Package")
-      intent.setData(Uri.parse("package:"+app))
-      intent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
+        intent.data = Uri.parse("package:$app")
+        intent.flags = Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT
       intent.putExtra(Intent.EXTRA_RETURN_RESULT, true)
       activity?.startActivityForResult(intent, 1)
     } else {
@@ -50,7 +50,7 @@ class UninstallerPlugin: FlutterPlugin, MethodCallHandler,PluginRegistry.Activit
   }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-        activity=binding.getActivity()
+        activity=binding.activity
         binding.addActivityResultListener(this)
     }
 
