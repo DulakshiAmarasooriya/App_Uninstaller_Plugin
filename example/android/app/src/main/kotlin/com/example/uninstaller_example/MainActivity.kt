@@ -1,0 +1,6 @@
+package com.example.uninstaller_example
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
